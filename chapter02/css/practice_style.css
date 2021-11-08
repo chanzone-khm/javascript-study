@@ -1,0 +1,99 @@
+@import url(sanitize.css);
+
+header h1{
+    background-color: brown;
+    padding: 10px;
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+    margin: 0;
+    font-size: 24px;
+    text-align: center
+}
+
+
+body{
+    background-color: #f0f0f0;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+
+.container {
+    width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+}
+
+.event{
+    background-color: tomato;
+    color: white;
+    font-size: 20px;
+    padding: 2px;
+    font-weight: bold;
+    margin: 0 0 2px;
+
+}
+
+.description img{
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.information h1{
+    font-weight: normal;
+    font-size: 40px;
+    margin: 0 10px 10px 0;
+
+}
+
+
+
+.content{
+    background-color:#fff;
+    padding: 20px;
+}
+.table{
+    margin: 0 0 20px;
+    
+}
+
+.table h2{
+    clear: left;
+    font-size: 100%;
+    background-color: aquamarine;
+    margin: 10px 0 0;
+    padding: 5px 5px;
+}
+
+.table ol{
+    list-style: decimal inside;
+    padding: 0px;
+    margin: 0px;
+}
+
+.table li{
+    border-bottom: 1px solid black;
+    width: 50%;
+    float: left;
+    padding: 5px 10px;
+}
+
+/* floatしたせいで、表が飛び出している形になってるのを直す。
+以下は丸暗記でOKとりあえず。なくなった背景をもとに戻すときに使う。
+飛び出しているのは表部分なので、表を示すタグliの親であるolに.clearfixクラスをつけてあげる。 */
+.clearfix:after{
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+a{
+    color: #666;
+}
+
+footer{
+    text-align: center;
+    font-size: 80%;
+}
+

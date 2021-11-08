@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <meta charset = "UTF-08">
+    <meta name="viewport" content = "width=device-width">
+
+    <title>ご利用アンケート</title>
+    <!-- bootstrap cdn というcssフレームワーク をstylesheetとして使う。 -->
+    <!-- cssは書いた順で適用されるので、style.cssは後ろに記述する。（先に書くと、style.cssで設定した内容がbootstrapで上書きされてしまう。 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel ="stylesheet" href = "style.css">
+    
+</head>
+
+<body>
+    <div class = "container">
+        <header>
+            <div class =row>
+                <div class ="col-sm-6"">
+                    <h1>ご利用アンケート</h1>
+                </div>
+
+                <div class ="col-sm-6 text-right">
+                    <a href = "/">home</a>
+                </div>
+
+        </header>                
+
+    </div>
+    
+    <hr>
+    <div class = "container">
+        <!-- データを送信するときはformを使う。 actionに送信先、methodはgetなのかpostなのか指定 -->
+        <form action = "" method ="post" class = "row">
+            <div class = "col-sm-8 offset-2">
+                <p>この度は、本書をご利用いただきありがとうございます
+                恐れ入りますが、以下のフォームにご記入いただき、送信して頂けると幸いです。
+                </p>
+                
+                <!-- bootstrapのformの機能を割り当てるクラス formの見た目をいい感じに -->
+                <!-- 使うときはinputのクラスにform-controlを追加する -->
+                <div class = "form-group">
+                    <!-- 入力フォームを使うにはlabel（フォームの項目名）とinput（入力欄）が必要。 -->
+                    <!-- for と inputのidは同じ値にしておくと紐づく。 -->
+                    <!-- nameクラスはフォームを送信するときに必要な要素となるもの。サーバー側から指示がある -->
+                    <label for="name">お名前</label>
+                    <input type="text" id="name" name="name" class="form-contrjol" placeholder="例）山田 太郎">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <hr>
+    
+    <div class = "container">
+        <footer>
+            <p>&copy; ともすた</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
+

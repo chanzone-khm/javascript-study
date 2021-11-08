@@ -1,0 +1,159 @@
+@import url(sanitize.css);
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+body{
+    background-color: #f0f0f0;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.container{
+    /* width: 800px; */
+
+    /* スマホ対応でmax-widthにする
+    widthだとスマホ画面で見たときに、常に画面の横幅が800pxとなるように
+    文字や画像が小さくなるようになってしまっている。
+    max-widthとすることで、800px以上のときはそのままだけど、
+    800px以下になったら縮むという設定。*/
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    margin: 0 auto;
+}
+
+header{
+    background-color: #422814;
+    padding: 10px;
+    color: #fff;
+}
+
+header h1{
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+    font-family: 'Sriracha', cursive;
+}
+/* information h1 イヤホンジャックの向こう側でフローティングしたせいで、
+imgも右側にきてしまっている。
+これを解消するため、descriptionのところからfloatをクリアするよと記載する*/
+.description{
+    clear: left;
+}
+
+/* float 要素を浮かせる。leftとすると自分自身(img)が左に浮き、残りの要素が右にくる。 */
+.description img{
+    float: left;
+    margin: 0 10px 10px 0;
+    /* transitionの対象となるプロパティ。allとすれば全部対象とできる。
+    今回はopacityを対象 */
+    transition-property: opacity;
+    /* 発動完了までの時間 */
+    transition-duration: 1s;
+    /* 一定の速度で変化するのか、最後だけ早いのかなど設定できる。easeとすると一定 */
+    transition-timing-function: ease;
+    /* 発動までの時間 */
+    transition-delay: 0s;
+}
+/* :hover 疑似クラス
+:のあとにキーワードを加えることで、その時の状態によってのスタイルを変更できる。
+hoverはマウスカーソルを重ねた時の疑似クラス
+アニメーションを使いたい場合は、description imgのほうに transition-****を追加する。
+*/
+.description img:hover{
+    /* 透明度 */
+    opacity: .5;
+}
+
+/* h1をfloatさせることで、Albumが右側に来る */
+.information h1{
+    font-size: 18px;
+    margin: 0 10px 10px 0;
+    float: left;
+}
+
+/* display: inline 指示がブロック全体か、インラインかになる。
+タグにはブロックとインラインという概念があるが、pタグはブロックのタグ
+ブロックタグの背景を設定すると、その行全てに適用される。
+inlineにしてあげるとpタグの内部のところだけ背景色を変えられる、 */
+.information .type{
+    display: inline;
+    background-color: #E35A4D;
+    padding: 3px 5px;
+    font-size: 80%;
+    color: #fff;
+}
+
+.content{
+    background-color: #fff;
+    padding: 20px;
+}
+
+.songs{
+    margin: 0 0 20px;
+}
+
+.songs h2{
+    clear: left;
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+    background-color: #E6E4DD;
+    padding: 5px 10px;
+}
+
+.songs ol{
+    padding: 0;
+    margin: 0;
+    list-style: decimal inside;
+}
+
+.songs li{
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+    float: left;
+    padding: 5px 10px;
+}
+
+.clearfix:after{
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+a{
+    color: #666;
+}
+
+footer{
+    text-align: center;
+    font-size: 80%;
+}
+
+/* スマホサイズの画面に対応する メディアクエリー*/
+/* 最大の幅 600pxのときに以下の記述が反映されるというcss */
+@media only screen and (max-width: 600px){
+    .description img{
+        /* スマホ画面ではfloatをしないようにして、文字が画像の右に回り込まないようにする。 */
+        float: none;
+        /* 画像はdisplay inlineになっている。 marginをきくようにするため
+        blockを指定してあげる。 */
+        display: block;
+        margin: 0 auto;
+    }
+
+    header{
+        padding: 5px;
+    }
+    header h1{
+        font-size: 12px;
+    }
+    .information h1{
+        font-size: 14px;
+    }
+    /* width: inherit 親の要素を継承するという意味 */
+    .songs li{
+        float: none;
+        width: inherit;
+    }
+}
