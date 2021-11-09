@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <meta charset = "UTF-08">
+    <meta name="viewport" content = "width=device-width">
+
+    <title>ご利用アンケート</title>
+    <!-- bootstrap cdn というcssフレームワーク をstylesheetとして使う。 -->
+    <!-- cssは書いた順で適用されるので、style.cssは後ろに記述する。（先に書くと、style.cssで設定した内容がbootstrapで上書きされてしまう。 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel ="stylesheet" href = "style.css">
+    
+</head>
+
+<body>
+    <div class = "container">
+        <header>
+            <div class =row>
+                <div class ="col-sm-6"">
+                    <h1>ご利用アンケート</h1>
+                </div>
+
+                <div class ="col-sm-6 text-right">
+                    <a href = "/">home</a>
+                </div>
+
+        </header>                
+
+    </div>
+    
+    <hr>
+    <div class = "container">
+        <!-- データを送信するときはformを使う。 actionに送信先、methodはgetなのかpostなのか指定 -->
+        <form action = "" method ="post" class = "row">
+            < class = "col-sm-8 offset-2">
+                <p>この度は、本書をご利用いただきありがとうございます
+                恐れ入りますが、以下のフォームにご記入いただき、送信して頂けると幸いです。
+                </p>
+                
+                <!-- bootstrapのformの機能を割り当てるクラス formの見た目をいい感じに -->
+                <!-- 使うときはinputのクラスにform-controlを追加する -->
+            <!-- input -->
+                <div class = "form-group">
+                    <!-- 入力フォームを使うにはlabel（フォームの項目名）とinput（入力欄）が必要。 -->
+                    <!-- for と inputのidは同じ値にしておくと紐づく。 -->
+                    <!-- nameクラスはフォームを送信するときに必要な要素となるもの。サーバー側から指示がある -->
+                    <label for="name">お名前</label>
+                    <input type="text" id="name" name="name" class="form-contrjol" placeholder="例）山田 太郎">
+                </div>
+            <!-- ドロップダウン　selectタグ -->
+                <div class="form-group">
+                    <label class="job">ご職業</label>
+                    <!-- ドロップダウンリストはselectタグを使う -->
+                    <!-- idはlabelと紐づける。nameはサーバに送信する時の情報　form-controlクラスをわすれずに -->
+                    <select id="job" name="job" class="form-control">
+                    <!-- <select id="job" name="job" class="form-control" size="5" multiple> -->
+                        <!-- selectを使うときはoptionタグを必ず使う。 -->
+                        <!-- valueはサーバーに送信する時の情報 -->
+                        <option value="">選択してください</option>
+                        <option value="会社員">会社員</option>
+                        <option value="学生">学生</option>
+                    </select>
+                </div>
+            <!-- checkbox -->
+                <div class="form-group">
+                    <!-- チェックボックスの場合、項目が１つではないので、クラスは宣言せず、個別に宣言する -->
+                    <label>知りたい内容</label>
+                    <div class="form-check">
+                        <input type="checkbox" name="q1" id="q1_1" value="html" class="form-check-input">
+                        <label for="q1_1" class ="form-check-label">HTML1</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" name="q1" id="q1_2" value="css" class="form-check-input">
+                        <label for="q1_2" class ="form-check-label">css</label>                        
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" name="q1" id="q1_3" value="javascript" class="form-check-input">
+                        <label for="q1_3" class ="form-check-label">javascript</label>                        
+                    </div>
+
+                        <!-- まず全体を加工form-checkクラスが必要 チェックボックスごとに作る-->
+                        <!-- inputにcheckboxと form-check-inputと書くと、チェックボックスが出来上がり。 -->
+                        <!-- idは次に書くlabelのfor属性と一致させる。 -->
+                        <!-- valueはサーバーに送信される実際の値 -->
+                        <!-- nameはいまだによくわからん。　サーバーの送信先の情報のことっぽい？ -->
+
+                        <!-- labelは forをinputのidと一致させる-->
+                        <!-- classはform-check-labelとするとチェックボックスの横に文字が来るようになる。 -->
+                </div>
+            <!-- radioボタン -->
+                <div class="form-group">
+                    <label class="d-block">理解度はいかがですか</label>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_1" value="1" class="form-check-input">
+                        <label for="q2_1" class="form-check-label">理解できなかった</label>
+                    </div>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_2" value="2" class="form-check-input">
+                        <label for="q2_2" class="form-check-label">まぁまぁ理解できた</label>
+                    </div>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_3" value="3" class="form-check-input">
+                        <label for="q2_3" class="form-check-label">理解できた</label>
+                    </div>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_4" value="" class="form-check-input">
+                        <label for="q2_4" class="form-check-label">回答しない</label>
+                    </div>
+                    
+
+                    <!-- チェックボックスと基本は同じ -->
+                    <!-- 最後のvalue 回答しないについてはデータを送信しない　ということで""としている -->
+                    <!-- 横一列にするには、form-check-inline クラスを使う。　divはブロックだけど、これでinlineになる。（横並びになる -->
+                    <!-- 逆にlabel 理解度はいかがですか？のところと横一列になる。labelはinline要素なので、inline要素同士で横並びになるということ -->
+                    <!-- 回避方法として、labelをdivで囲ってblockにするか、d-blockクラスでblock化する。これはbootstrapの機能 -->
+
+                </div>
+            <!-- テキストエリア -->
+                
+            </div>
+        </form>
+    </div>
+
+
+
+    <hr>
+    
+    <div class = "container">
+        <footer>
+            <p>&copy; ともすた</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
+
