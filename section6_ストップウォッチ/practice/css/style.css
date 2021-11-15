@@ -1,0 +1,21 @@
+header {
+    padding: 0;
+}
+
+#timer {
+    font-size: 50px;
+    background-color: black;
+    color: white;
+    margin: 0 0 50px;
+    padding: 10px;
+    box-shadow: 10px 10px 0.2px rgba(92, 95, 95, 0.6);
+    border-radius: 5px;
+}
+
+.container {
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+}

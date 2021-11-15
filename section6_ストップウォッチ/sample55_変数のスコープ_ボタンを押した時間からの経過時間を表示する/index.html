@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Timer</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Optional theme -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+			integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<div class="container">
+			<!-- javascriptで記述 -->
+			<p id="timer">00:00:00</p>
+
+			<div>
+				<button id="start_stop" class="btn btn-lg btn-primary">START</button>
+			</div>
+			<script>
+				// sample54では秒数が膨大な時間になっている。ストップウォッチとして使うには、startボタンを押した時の時刻 ー 現在の時刻をすれば良い。
+				// clickした瞬間の時刻は保持したいので、EventListenerの中でDateのインスタンスを作る必要がある。
+				// setIntervalで 現在の時刻とclickを取得したときの時刻の差を算出すればよい。
+
+				// startはgetElementByIdでスコープされた変数なので、グローバル変数として宣言する
+				// この時点では、new Date();は記載しない。このタイミングの時刻を取得したいわけではないので、
+				var start;
+
+				document.getElementById('start_stop').addEventListener('click', function(){
+					// クリックしたときの時刻を取得する必要がある。
+					start = new Date();
+					setInterval(goTimer, 10);
+				});
+
+				
+				var goTimer =function() {
+					var now =new Date();
+					// clickしたときの時刻と現在の時刻の差を表示する
+					var milli = now.getTime() - start.getTime();
+					// m秒のところは不要なのでそこの処理。1000で割ってあげて、少数は切り落としすれば秒だけ表示される
+					var seconds = Math.floor(milli / 1000); 
+					　
+
+					document.getElementById('timer').innerHTML = seconds;
+				};
+			</script>
+		</div>
+	</body>
+</html>

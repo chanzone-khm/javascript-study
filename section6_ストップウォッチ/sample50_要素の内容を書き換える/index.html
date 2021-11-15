@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Timer</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Optional theme -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+			integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+		<div class="container">
+			<!-- javascriptで記述 -->
+			<p id='timer'>00:00:00</p>
+			
+			
+			
+			
+			<div>
+				<button id="start_stop" class="btn btn-lg btn-primary">START</button>
+			</div>
+			<script>
+
+				// 以下のように記述すると、タイマーの画面が複数個表示されてしまう。
+
+				
+				// document.write('<p id="timer">00:00:00</p>')
+				// document.write('<p id="timer">00:00:01</p>')
+				// document.write('<p id="timer">00:00:02</p>')
+				
+				// innerHTMLを使うことで、要素を上書き?出来る。 見えないけど一瞬で0～3まで表示されている状態となっている。
+				// getElementById id属性を使って要素を取得するメソッド 取得されたデータもオブジェクトとなる。
+				// innerHTMLはプロパティ idがTimerとなっている箇所の要素に 00:00:01を書き込む ことができる。
+				// 以下の場合は00:00:03しか表示されない
+				// まとめると、idがtimerの要素に右辺を上書きする 的な感じ
+				document.getElementById('timer').innerHTML ='00:00:00';
+				document.getElementById('timer').innerHTML ='00:00:01';
+				document.getElementById('timer').innerHTML ='00:00:02';
+				document.getElementById('timer').innerHTML ='00:00:03';
+			</script>
+			</div>
+	</body>
+</html>

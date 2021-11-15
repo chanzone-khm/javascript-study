@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>timer</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Optional theme -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+			integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<p id="timer">00:00:00</p>
+
+			<button id="start_stop" class="btn btn-primary btn-lg">START</button>
+
+
+			<script>
+
+				var start;
+				document.getElementById("start_stop").addEventListener("click", function(){
+					
+					var timer_id;
+
+
+					if (this.innerHTML === 'START') {
+						start = new Date();
+						// タイマー開始
+						timer_id = setInterval(go_timer, 10)
+						var test;
+
+						
+						// ボタンが押されたらstopに表示を切り替える。
+						this.innerHTML = 'STOP';
+						this.classList.remove('btn-primary');
+						this.classList.add('btn-danger');
+					} else{
+						clearInterval(timer_id);
+
+						this.innerHTML = 'START';
+						this.classList.remove('btn-danger');
+						this.classList.add('btn-primary');
+					}
+				});
+
+				
+				var addZero =function(value){
+					if (value < 10){
+						value = '0' + value;
+					}
+					return value;
+				}
+				// タイマー
+				var go_timer = function(){
+					var seconds;
+					var minutes;
+					var hours;
+					var now = new Date();
+
+					// 秒数のカウント
+					seconds = now.getTime() - start.getTime();
+					seconds = Math.floor(seconds / 1000);
+					minutes = Math.floor(seconds / 60);
+					hours = Math.floor(minutes / 60);
+
+
+					// 60秒以上になったら0秒カウントにもどす。
+					seconds = seconds - minutes * 60;
+					minutes = minutes - hours * 60;
+
+
+					seconds = addZero(seconds);
+					minutes = addZero(minutes);
+					hours = addZero(hours);
+					
+					document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+				};
+
+			</script>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Timer</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Optional theme -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+			integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<div class="container">
+			<!-- javascriptで記述 -->
+			<p id="timer">00:00:00</p>
+
+			<div>
+				<button id="start_stop" class="btn btn-lg btn-primary">START</button>
+			</div>
+			<script>
+				// ユーザーがなにか処理（ボタンを押す）ことをイベントという
+				// イベントに対してjavascriptが動くことをイベントドリブンという
+
+				// startボタンを押したら時間が駆動するようにプログラムをつくる
+
+				var addZero = function (value) {
+					if (value < 10) {
+						value = "0" + value;
+					}
+
+					return value;
+				};
+				// ボタンのidを取得するためgetElementByIdを使う
+				document
+					.getElementById("start_stop")
+					.addEventListener("click", function () {
+						// addEventLister ○○したときに処理をする。 今回はclickをしたときにfunctionを実行
+						// functionは事前に定義したものをつかえるし、この記述の中でfunctionを作ることもできる。（無名関数）
+						var now = new Date(); // Dateというインスタンスを作る
+						var seconds = now.getSeconds(); // 秒を取得
+
+						var minutes = now.getMinutes();
+						var hours = now.getHours();
+
+						seconds = addZero(seconds);
+						minutes = addZero(minutes);
+						hours = addZero(hours);
+
+						document.getElementById("timer").innerHTML =
+							hours + ":" + minutes + ":" + seconds;
+					});
+					
+			</script>
+		</div>
+	</body>
+</html>
