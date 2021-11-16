@@ -22,7 +22,7 @@
                 <div class ="col-sm-6 text-right">
                     <a href = "/">home</a>
                 </div>
-
+            </div>
         </header>                
 
     </div>
@@ -44,7 +44,7 @@
                     <!-- for と inputのidは同じ値にしておくと紐づく。 -->
                     <!-- nameクラスはフォームを送信するときに必要な要素となるもの。サーバー側から指示がある -->
                     <label for="name">お名前</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="例）山田 太郎">
+                    <input type="text" id="name" name="name" class="form-contrjol" placeholder="例）山田 太郎">
                 </div>
             <!-- ドロップダウン　selectタグ -->
                 <div class="form-group">
@@ -77,44 +77,16 @@
                         <label for="q1_3" class ="form-check-label">javascript</label>                        
                     </div>
 
-                        <!-- まず全体を加工form-checkクラスが必要 チェックボックスごとに作る-->
+                        <!-- まず全体を加工form-checkクラスが必要 -->
                         <!-- inputにcheckboxと form-check-inputと書くと、チェックボックスが出来上がり。 -->
                         <!-- idは次に書くlabelのfor属性と一致させる。 -->
-                        <!-- valueはサーバーに送信される実際の値 -->
+                        <!-- valueは送信される情報 -->
                         <!-- nameはいまだによくわからん。　サーバーの送信先の情報のことっぽい？ -->
 
                         <!-- labelは forをinputのidと一致させる-->
                         <!-- classはform-check-labelとするとチェックボックスの横に文字が来るようになる。 -->
-                </div>
-            <!-- radioボタン -->
-                <div class="form-group">
-                    <label class="d-block">理解度はいかがですか</label>
-                    <div class ="form-check form-check-inline">
-                        <input type="radio" name="q2" id="q2_1" value="1" class="form-check-input">
-                        <label for="q2_1" class="form-check-label">理解できなかった</label>
-                    </div>
-                    <div class ="form-check form-check-inline">
-                        <input type="radio" name="q2" id="q2_2" value="2" class="form-check-input">
-                        <label for="q2_2" class="form-check-label">まぁまぁ理解できた</label>
-                    </div>
-                    <div class ="form-check form-check-inline">
-                        <input type="radio" name="q2" id="q2_3" value="3" class="form-check-input">
-                        <label for="q2_3" class="form-check-label">理解できた</label>
-                    </div>
-                    <div class ="form-check form-check-inline">
-                        <input type="radio" name="q2" id="q2_4" value="" class="form-check-input">
-                        <label for="q2_4" class="form-check-label">回答しない</label>
-                    </div>
-                    
 
-                    <!-- チェックボックスと基本は同じ -->
-                    <!-- 最後のvalue 回答しないについてはデータを送信しない　ということで""としている -->
-                    <!-- 横一列にするには、form-check-inline クラスを使う。　divはブロックだけど、これでinlineになる。（横並びになる -->
-                    <!-- 逆にlabel 理解度はいかがですか？のところと横一列になる。labelはinline要素なので、inline要素同士で横並びになるということ -->
-                    <!-- 回避方法として、labelをdivで囲ってblockにするか、d-blockクラスでblock化する。これはbootstrapの機能 -->
                 </div>
-
-                
                 </div>
             </div>
         </form>

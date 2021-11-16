@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TODAY</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+
+		<!-- Optional theme -->
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"> -->
+
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>TODAY</h1>
+		</header>
+
+		<div class="container">
+			<!-- <p class="date">20xx/01/23</p> -->
+			<!-- javascriptで日付を記載する -->
+			<!-- javascriptでかく箇所は<script>で囲う -->
+			<script>
+				// 10+3と表示 文字列 クォーテーションでもダブルクォーテーションでもOK
+				document.write('10+3<br>')
+			
+				// 13と表示 
+				document.write(10+3+'<br>') 
+				
+				// 四則演算 2.6
+				document.write((10+3)*2/10+'<br>')
+
+				// 連結 
+				document.write('10+3の結果は、' + (10+3) + 'です。<br>')
+
+				// 変数 varで変数宣言
+				var answer = 10 + 3
+				document.write(answer+'<br>')
+
+				// 変数の上書き 7
+				answer = 10 - 3;
+				document.write(answer+'<br>')
+
+				// 変数の再代入 7 + 10 で17
+				answer += 10;
+				document.write(answer + '<br>')
+
+				// インクリメント デクリメント
+				answer++
+				// answer--
+				document.write(answer + '<br>')
+
+
+			</script>
+		</div>
+	</body>
+</html>

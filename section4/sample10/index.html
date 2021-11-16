@@ -22,7 +22,7 @@
                 <div class ="col-sm-6 text-right">
                     <a href = "/">home</a>
                 </div>
-
+            </div>
         </header>                
 
     </div>
@@ -31,7 +31,7 @@
     <div class = "container">
         <!-- データを送信するときはformを使う。 actionに送信先、methodはgetなのかpostなのか指定 -->
         <form action = "" method ="post" class = "row">
-            < class = "col-sm-8 offset-2">
+            <div class = "col-sm-8 offset-2">
                 <p>この度は、本書をご利用いただきありがとうございます
                 恐れ入りますが、以下のフォームにご記入いただき、送信して頂けると幸いです。
                 </p>
@@ -44,7 +44,7 @@
                     <!-- for と inputのidは同じ値にしておくと紐づく。 -->
                     <!-- nameクラスはフォームを送信するときに必要な要素となるもの。サーバー側から指示がある -->
                     <label for="name">お名前</label>
-                    <input type="text" id="name" name="name" class="form-contrjol" placeholder="例）山田 太郎">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="例）山田 太郎">
                 </div>
             <!-- ドロップダウン　selectタグ -->
                 <div class="form-group">
@@ -112,10 +112,21 @@
                     <!-- 横一列にするには、form-check-inline クラスを使う。　divはブロックだけど、これでinlineになる。（横並びになる -->
                     <!-- 逆にlabel 理解度はいかがですか？のところと横一列になる。labelはinline要素なので、inline要素同士で横並びになるということ -->
                     <!-- 回避方法として、labelをdivで囲ってblockにするか、d-blockクラスでblock化する。これはbootstrapの機能 -->
-
+                    
                 </div>
+
             <!-- テキストエリア -->
-                
+                <!-- テキストフィールドと違って、改行してつかえる -->
+                <div class="form-group">
+                    <label for="message">ご意見</label>
+                    <textarea name="message" id="message" rows="10" class="form-control"></textarea>
+                    <!-- textareaは終了タグがある!注意-->
+                    <!-- rowsは縦幅。colsもあるが、form-control（bootstrapのクラス）があると効かない -->
+                </div>
+
+            <!-- 送信ボタン -->
+                <button type="submit" class="btn btn-primary">送信する</button>
+                <!-- bootstrapの公式ページでbtnで検索すると色々見れる。 btnだけだとボタンの色が薄くて見えにくい。 -->
             </div>
         </form>
     </div>

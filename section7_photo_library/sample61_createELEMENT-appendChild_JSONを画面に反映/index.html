@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photos</title>
+
+    <!-- font読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
+    
+    <div class="container">
+        <!-- JSONを使って画像を表示する -->
+        <div id="img_unit">
+            <!-- JSONを使って以下のHTMLを記述する。 -->
+            <!-- <div class="photo">
+                <img src="../img/img01.jpg">
+            <div class="inner"><p>コメント1 <span>nickname</span></p></div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JSON
+        /* 
+        [{}]の中にkey: valueで記載する。
+        取り出す時は、images[0].nameのように記載する
+        */
+        var images = [
+            {
+                "path": "../img/img01.jpg",
+                "name": "name01",
+                "caption": "コメント1"
+            },
+            {
+                "path": "../img/img02.jpg",
+                "name": "name02",
+                "caption": "コメント2"
+            }
+        ];
+        
+        // javascriptでHTMLを書く。
+        var img;
+        var caption;
+        var div;
+        img = document.createElement('img'); // 要素を作る というメソッド imgというタグを作った
+        img.setAttribute('src', images[0].path); // 属性を追加 srcという属性を追加して、srcの中身はimages[0].pathとした
+        // <img src="img/img01.jpg"> となっている
+
+        // document.getElementById('img_unit').appendChild(img); // appendChild 指定したidに子の要素を追加。つまり、<img src="img/img01.jpg">が記述された。
+            // innerHTMLと似ているが、innerHTMLは要素オブジェクトは指定できない 
+            // document.getElementById('img_unit').innerHTML = img はできない。 文字列しか入力できない
+        
+        // 同様にキャプションをついか div innerのところね
+        caption = document.createElement('div');
+        caption.className = 'inner'; // class = innerを追加
+        caption.innerHTML = '<p>' + images[0].caption + '<span>' + images[0].name + '</span></p>';
+        // <div class='inner'><p>コメント1 <span>name01</span></p></div>
+
+        // 同様にdiv photoのところを追加
+        div = document.createElement('div');
+        div.className = 'photo';
+        div.appendChild(img); // div photoの中にimg要素をいれる
+        div.appendChild(caption); // div photoの中にdiv innerを追加
+
+        document.getElementById('img_unit').appendChild(div); // appendChild 指定したidに子の要素を追加。つまり、<img src="img/img01.jpg">が記述された。
+
+    </script>
+</body>
+</html>

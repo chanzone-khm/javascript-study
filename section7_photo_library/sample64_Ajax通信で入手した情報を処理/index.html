@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photos</title>
+
+    <!-- font読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
+    
+    <div class="container">
+        <!-- JSONを使って画像を表示する -->
+        <div id="img_unit">
+            <!-- JSONを使って以下のHTMLを記述する。 -->
+            <!-- <div class="photo">
+                <img src="../img/img01.jpg">
+            <div class="inner"><p>コメント1 <span>nickname</span></p></div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // sample62まででJSONを記述したが、通常はJSONは外部に置いたり、サーバーに置いたり、APIで取得する。
+        // Ajax通信を体感する
+
+        // デベロッパーツール　→　Network →　再読み込み　→　images.phpを見るとJSONが取得出来ていることを確認する。
+
+        /* 
+        open : GETで　特定のサーバーのデータを呼び出す。　openはhttps等しかサポートしていない。（ためしにローカルファイルを指定するとエラーが出るので確認してみる）
+                ファイルプロトコルやローカルPCのデータを読むというのははセキュリティ上危険のためサポートしていないらしい
+        send : 指定したサーバーにリクエストを送る。　情報を送ることも可能でその場合は（）の中に記述する。今回は何も送る必要がないのでnull
+        responseType : jsonデータを指定 リクエストしたデータをどの形式で受け取るか指定。
+        */
+        var ajax = new XMLHttpRequest(); //ajax通信を行うオブジェクト
+        ajax.open('GET', 'https://h2o-space.com/htmlbook/images.php'); // サーバーにあるデータを呼び出す
+        ajax.responseType = 'json';
+        ajax.send(null);
+    
+        // ajax通信で受け取ったファイルの処理
+        /* 
+        ajax.readyState 通信の状態に応じた数値を返す
+        0   UNSENT  インスタンスができた
+        1   OPEN   openメソッドを利用した
+        2   HEADERS_RECEIVED    ヘッダーが受信できた
+        3   LOADING データを受信中
+        4   DONE    通信が完了
+        
+        var ajax ~の後に　０
+        ajax.openの後に　１
+        以降はsend以降で数字が自動的にかわる。（下記のfunctionのところで２～４
+        ２　ヘッダーの部分が受信を始めた
+        ３　データを受信中　となり
+        ４　DONE　で通信が完了となる。
+        通信が終わってからJSONデータの処理を開始するようにしたいので、この値が帰ってきたら処理をするようにプログラムを組む
+        */
+        
+        //以下は不要なプログラムだけど、上記の動作を理解するために残しておく
+        ajax.onreadystatechange = function() {
+            alert(ajax.readyState); // 2 3 4 がアラートされる
+        };
+
+
+        ajax.onreadystatechange = function() {
+            if(ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200){ 
+                // readystateが４のとき（DONE）のことであるが、明示的にするためにXMLHttpRequest.DONEとする。
+                // ajax通信は通信は成功しているが、データが正しくないということがある。　例）アドレスが間違っている、アドレスにファイルがない　等
+                // これを防ぐため、statusを設定する。　例えばファイルが見つからない場合は404など。　正常終了の場合は200となる。
+                
+                for (var i=0; i<this.response.length; i++){ // このthisはajaxが入る　ajax.responseの中の長さは今回は３らしい。
+                    alert(ajax.response[i].path);
+                }
+            }
+        };
+
+    </script>
+</body>
+</html>

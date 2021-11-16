@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(26,55,229, 0.06);
+}
+
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 3px rgba(0,0,0, 0.3);
+}
+
+img{
+    width: 100%;
+    margin: 0;
+    /* vertical-align 縦方向の位置揃え */
+    vertical-align: top;
+}
+
+header{
+    background-color: #007acc;
+    color: #fff;
+    width: 100%;
+    /* headerをスクロールしても残るようにする */
+    /* 
+    position: fixed;の後にはtop , left , right bottom などのプロパティで位置指定することと
+    z-indexで重なりの一番上を指定するようにする
+     */
+    position: fixed;
+    top: 0;
+    z-index: 100;
+
+    /* 
+    fixedだけだと後で詰まるらしい ので色々追加する。
+    topで画面の上端であることを明確にする。
+    z-index: 100;  要素が増えてきたときにheaderに重なることを防ぐために、headerを全面に出すために大きな値を設定する
+
+     */
+}
+
+header{
+    margin: 0;
+    font-size: 25px;
+    padding: 5px;
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+
+.photo{
+    position: relative;
+}
+
+
+.photo .inner{
+    /* 写真下部に帯をつけてコメントがそこにくるようにする。 */
+
+    /* absolute 絶対という意味。 位置がそこに固定される*/
+    /* そのあとbottom やleftで位置を調整する。 */
+    position: absolute;
+    bottom: 0;
+    /* 帯の色と文字色を調整 */
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    /* 位置を調整  幅は画像の右側までおきたいので100%*/
+    margin: 0;
+    width: 100%;
+}
+/*
+解説
+写真の下部に帯を設けたいので、写真に対しての相対位置を指定してあげる。
+.photoのposition: relative;がない場合
+.photo .inner の position : absoluteは画面全体に対しての指示になってしまう。
+body要素を親とした位置となってしまう。
+親要素を指定するため .photoを宣言し、position: relative;を設定する
+写真を親要素にしたいので、div のphotoクラスを親とした位置をになる。
+
+またposition absoluteにするとdivタグであっても、ブロック要素にならない。
+inline要素と同様に、幅が要素の幅になってしまう。
+なのでwidthを指定してあげる。
+ */
+
+.inner p{
+    padding: 20px;
+}
+
+.inner span{
+    margin-left: 10px;
+}

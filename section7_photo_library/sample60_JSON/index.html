@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photos</title>
+
+    <!-- font読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
+    
+    <div class="container">
+        <div id="img_unit">
+            <div class="photo">
+                <img src="../img/img01.jpg">
+                <div class="inner"><p>コメント1 <span>nickname</span></p></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JSON
+        /* 
+        [{}]の中にkey: valueで記載する。
+        取り出す時は、images[0].nameのように記載する
+        */
+        var images = [
+            {
+                "path": "../img/img01.jpg",
+                "name": "name01",
+                "caption": "コメント1"
+            },
+            {
+                "path": "../img/img02.jpg",
+                "name": "name02",
+                "caption": "コメント2"
+            }
+        ];
+    
+    // windowオブジェクトの1つ 警告や注意を促すときに使う。
+    alert(images[0].path)
+    </script>
+</body>
+</html>

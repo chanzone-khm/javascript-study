@@ -18,11 +18,10 @@
                 <div class ="col-sm-6"">
                     <h1>ご利用アンケート</h1>
                 </div>
-
                 <div class ="col-sm-6 text-right">
                     <a href = "/">home</a>
                 </div>
-
+            </div>
         </header>                
 
     </div>
@@ -40,11 +39,12 @@
                 <!-- 使うときはinputのクラスにform-controlを追加する -->
             <!-- input -->
                 <div class = "form-group">
-                    <!-- 入力フォームを使うにはlabel（フォームの項目名）とinput（入力欄）が必要。 -->
-                    <!-- for と inputのidは同じ値にしておくと紐づく。 -->
-                    <!-- nameクラスはフォームを送信するときに必要な要素となるもの。サーバー側から指示がある -->
-                    <label for="name">お名前</label>
-                    <input type="text" id="name" name="name" class="form-contrjol" placeholder="例）山田 太郎">
+                    <!-- badgeクラスを使って、必須項目を強調表示する。 -->
+                    <label for="name">お名前<span class="badge badge-danger">必須</span></label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="例）山田 太郎" required>
+
+                    <!-- spanタグでbootstrapのクラス badge と badge-**を使って強調表示する。 -->
+                    <!-- と同時に、入力欄が必須である機能を乗せる。 requiredとすると、入力しない場合に警告するようになる。 -->
                 </div>
             <!-- ドロップダウン　selectタグ -->
                 <div class="form-group">
@@ -77,17 +77,56 @@
                         <label for="q1_3" class ="form-check-label">javascript</label>                        
                     </div>
 
-                        <!-- まず全体を加工form-checkクラスが必要 -->
+                        <!-- まず全体を加工form-checkクラスが必要 チェックボックスごとに作る-->
                         <!-- inputにcheckboxと form-check-inputと書くと、チェックボックスが出来上がり。 -->
                         <!-- idは次に書くlabelのfor属性と一致させる。 -->
-                        <!-- valueは送信される情報 -->
+                        <!-- valueはサーバーに送信される実際の値 -->
                         <!-- nameはいまだによくわからん。　サーバーの送信先の情報のことっぽい？ -->
 
                         <!-- labelは forをinputのidと一致させる-->
                         <!-- classはform-check-labelとするとチェックボックスの横に文字が来るようになる。 -->
+                </div>
+            <!-- radioボタン -->
+                <div class="form-group">
+                    <label class="d-block">理解度はいかがですか</label>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_1" value="1" class="form-check-input">
+                        <label for="q2_1" class="form-check-label">理解できなかった</label>
+                    </div>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_2" value="2" class="form-check-input">
+                        <label for="q2_2" class="form-check-label">まぁまぁ理解できた</label>
+                    </div>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_3" value="3" class="form-check-input">
+                        <label for="q2_3" class="form-check-label">理解できた</label>
+                    </div>
+                    <div class ="form-check form-check-inline">
+                        <input type="radio" name="q2" id="q2_4" value="" class="form-check-input">
+                        <label for="q2_4" class="form-check-label">回答しない</label>
+                    </div>
+                    
 
+                    <!-- チェックボックスと基本は同じ -->
+                    <!-- 最後のvalue 回答しないについてはデータを送信しない　ということで""としている -->
+                    <!-- 横一列にするには、form-check-inline クラスを使う。　divはブロックだけど、これでinlineになる。（横並びになる -->
+                    <!-- 逆にlabel 理解度はいかがですか？のところと横一列になる。labelはinline要素なので、inline要素同士で横並びになるということ -->
+                    <!-- 回避方法として、labelをdivで囲ってblockにするか、d-blockクラスでblock化する。これはbootstrapの機能 -->
+                    
                 </div>
+
+            <!-- テキストエリア -->
+                <!-- テキストフィールドと違って、改行してつかえる -->
+                <div class="form-group">
+                    <label for="message">ご意見</label>
+                    <textarea name="message" id="message" rows="10" class="form-control"></textarea>
+                    <!-- textareaは終了タグがある!注意-->
+                    <!-- rowsは縦幅。colsもあるが、form-control（bootstrapのクラス）があると効かない -->
                 </div>
+
+            <!-- 送信ボタン -->
+                <button type="submit" class="btn btn-primary">送信する</button>
+                <!-- bootstrapの公式ページでbtnで検索すると色々見れる。 btnだけだとボタンの色が薄くて見えにくい。 -->
             </div>
         </form>
     </div>
