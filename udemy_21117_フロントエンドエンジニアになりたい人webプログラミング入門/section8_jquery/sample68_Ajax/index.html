@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photos</title>
+
+    <!-- font読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
+    
+    <div class="container">
+        <div id="img_unit">
+        </div>
+    </div>
+
+    <!-- jQueryを使う -->
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // デベロッパツールでNETWORKを開くとimages.phpでJSONが取得できることが分かる。
+        // jQueryの場合はgetJSONで受信完了したらfunctionを実行するという風にできる。（javascriptの時はDONEを待つというのを記述する必要があった。）
+        
+        $.getJSON('https://h2o-space.com/htmlbook/images.php', function(data){
+            //alert('データを受信しました');
+
+            for (var i=0; i<data.length; i++){
+                $('<div class="photo"></div>') 
+                    .append('<img src="' + data[i].path + '">')
+                    .append('<div class="inner"><p>' + data[i].caption + '<span>' + data[i].name + '</span></p></div>')
+                    .appendTo('#img_unit');
+
+                    /* 
+                    セレクターを書かずにdivタグを記載。　タグを書くとページの中にまだ存在しないタグを作り出すことができる。javascのdocument.creatElement的な
+                        <div class="photo"></div>
+
+                    appendで上のタグに子を追加
+                        <div class="photo">
+                            <img src="img/img01.jpg">
+                            <div class="inner">
+                                <p>caption<span>name</span></p>
+                            </div>
+                        </div>
+                    
+                    appendToでセレクターで指定した要素を追加する。
+                    つまり上で作った要素をimg_unitに追加するということ
+                     */
+                    // 
+                    // 
+            }
+            
+                
+        });
+        
+    </script>
+</body>
+</html>

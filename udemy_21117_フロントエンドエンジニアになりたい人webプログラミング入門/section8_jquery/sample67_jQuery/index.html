@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photos</title>
+
+    <!-- font読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
+    
+    <div class="container">
+        <div id="img_unit">
+        </div>
+    </div>
+
+    <!-- jQueryを使う -->
+    <script src="js/jquery.min.js"></script>
+    <script>
+        /*
+        jQuery書式
+        ('#img_unit').html('...')
+        #のところ：セレクター　例：　クラスの場合は('.container')　idの場合は＃　このへんはｃｓｓと同じ 
+        .htmlのところ：メソッド  .htmlでinnerHTMLとほぼ同じ。
+        （’。。。）のところ：パラメーター
+
+        */
+        $('#img_unit').html('ここに、画像リストが表示されます。');
+        $('#img_unit').css('margin-top', '100px');
+
+        // メソッドチェーンで記述すると以下 おなじセレクターの場合以下のようにチェーンで記載することができる。
+        $('#img_unit').html('ここに、画像リストが表示されます2。').css('margin-top', '300px');
+
+
+    </script>
+</body>
+</html>

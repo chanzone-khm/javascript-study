@@ -1,0 +1,33 @@
+@charset "utf-8"; /* 念の為入れておく方がよいらしい */
+
+/* common 共通の設定をまず記載する。*/
+html {
+    /* 1.ユーザーが指定した文字サイズを正しく反映させるために、フォントサイズを100% */
+    font-size: 100%;
+}
+
+body {
+    font-family: "Hiragino Kaku Gothic proN", "メイリオ", sans-serif;
+    color: #555;
+    /* 行間の大きさ 単位はつけないのが慣例 下記は1.5倍になる（行間が広がる意味) */
+    line-height: 1.5;
+}
+
+img {
+    width: 100%;
+}
+
+.wrapper {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 10px
+}
+
+/* header */
+header {
+    border-top: 8px solid #8c6239;
+}
+
+.header_logo {
+    width: 90px;
+}

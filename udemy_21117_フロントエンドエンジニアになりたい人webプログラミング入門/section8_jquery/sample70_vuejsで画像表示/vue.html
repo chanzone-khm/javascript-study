@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Photos</title>
+
+		<!-- font読み込み -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>My Photos</h1>
+		</header>
+
+		<div class="container">
+			<div id="img_unit">
+				<!-- 以下を追加 -->
+				<div class="photo" v-for="Photo in Photos">  <!-- vueでforを使うという処理　photosを　photoという変数にいれてforを回す。pythonのforみたいなイメージ-->
+					<!-- 属性にプレースホルダーを指定したい場合は、vuejsであることを明確にするために:をつける-->
+					<img :src="Photo.path"> <!-- v-forでphotoにはPhotosの1つ目の要素が入るので、そのpathを指定しているということ-->
+					<div class="inner">
+						<p>{{ Photo.caption }}<span>{{ Photo.name }}</span></p> <!-- 同様にPhoto変数のcaptionやnameを取り出す-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- jQueryを使う -->
+		<script src="js/jquery.min.js"></script>
+		<!-- vue jsを使う 公式から持ってくる。-->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script>
+			// デベロッパツールでNETWORKを開くとimages.phpでJSONが取得できることが分かる。
+			// jQueryの場合はgetJSONで受信完了したらfunctionを実行するという風にできる。（javascriptの時はDONEを待つというのを記述する必要があった。）
+
+			var app = new Vue({
+				el: "#img_unit",
+				data: {
+					Photos: [] //空の配列を指定。ここにはAjax通信で取得したデータ入る。
+				},
+				created: function () {
+					// vueのオブジェクトが作られるときに実行される処理
+					var self = this; // Vueが入る。
+					//jQuery↓↓
+					$.getJSON("https://h2o-space.com/htmlbook/images.php", function (data) { 
+							self.Photos = data; // self.Photosなのでvue.photos　つまり空の配列に格納される。
+							// this.Photosとはできない。この場合のthisはjQueryを指すことになるので、thisをselfに置き換えて、スコープの変化に対応する必要がある。
+
+							/* 
+							jQueryのところでforを使っていたが、今回は使っていない。
+							これは、HTMLに記載した v-for がforの役割を果たす。
+
+							*/
+                        }
+					);
+				}
+			});
+		</script>
+	</body>
+</html>

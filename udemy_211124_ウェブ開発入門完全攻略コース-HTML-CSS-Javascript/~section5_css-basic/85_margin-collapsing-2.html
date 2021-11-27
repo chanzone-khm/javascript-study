@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マージンの相殺2</title>
+    <style>
+        h1, p{
+            background-color:aqua;
+        }
+        /* 親子関係でも相殺される。上下のみ
+        divの上とh1の上側が相殺(重ね合わせ)されてる。
+        divの下とpが 以下略
+        */
+        div {
+            background-color: #ccc;
+            margin-top: 100px;
+            margin-bottom: 100px
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        p {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>ボックスモデルの練習</h1>
+        <p>ボックスモデルの練習ボックスモデルの練習ボックスモデルの練習ボックスモデルの練習ボックスモデルの練習ボックスモデルの練習ボックスモデルの練習ボックスモデルの練習</p>
+
+    </div>
+</body>
+</html>

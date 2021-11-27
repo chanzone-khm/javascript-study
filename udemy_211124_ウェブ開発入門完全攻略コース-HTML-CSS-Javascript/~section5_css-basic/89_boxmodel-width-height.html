@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ボックスモデルの横幅と高さ指定の練習</title>
+    <style>
+        h1, p{
+            background-color:aqua;
+        }
+        /* タテ、横は パディングとボーダーに対して効く。マージンは無関係
+        設定しないとautoになる。 autoはブラウザの状態によって自動でかわるやつ。
+        */
+        h1 {
+            height: 400px;
+            width: 200px;
+            /* boxを中央に配置するには 左右のmarginをautoにする */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            /* auto がつかえるのはmarginのみ */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>ボックスモデルの横幅と高さ指定の練習</h1>
+        <p>ボックスモデルの横幅と高さ指定の練習ボックスモデルの横幅と高さ指定の練習ボックスモデルの横幅と高さ指定の練習ボックスモデルの横幅と高さ指定の練習ボックスモデルの横幅と高さ指定の練習ボックスモデルの横幅と高さ指定の練習</p>
+
+    </div>
+</body>
+</html>

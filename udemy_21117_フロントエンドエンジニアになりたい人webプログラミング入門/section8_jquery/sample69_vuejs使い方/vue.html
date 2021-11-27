@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photos</title>
+
+    <!-- font読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
+    
+    <div class="container">
+        <div id="img_unit">
+        </div>
+        
+        <div id="vue_unit">
+            {{ message }}<br>
+            {{ test }}
+        </div>
+    </div>
+
+    <!-- jQueryを使う -->
+    <script src="js/jquery.min.js"></script>
+    <!-- vue jsを使う 公式から持ってくる。-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> 
+    <script>
+        // デベロッパツールでNETWORKを開くとimages.phpでJSONが取得できることが分かる。
+        // jQueryの場合はgetJSONで受信完了したらfunctionを実行するという風にできる。（javascriptの時はDONEを待つというのを記述する必要があった。）
+        
+        $.getJSON('https://h2o-space.com/htmlbook/images.php', function(data){
+            //alert('データを受信しました');
+            // jQueryはHTMLに追加記述する場合に以下のように、タグをそのまま書く必要がある。そこが欠点
+            // ビューに特化したライブラリがvue.js
+            
+            for (var i=0; i<data.length; i++){
+                $('<div class="photo"></div>') 
+                .append('<img src="' + data[i].path + '">')
+                .append('<div class="inner"><p>' + data[i].caption + '<span>' + data[i].name + '</span></p></div>')
+                .appendTo('#img_unit');
+                
+            }
+            
+
+        });
+        
+        // vuejsで追記する。
+        var app = new Vue({
+            el: '#vue_unit', // elはelementの略　要素を指定する。
+            data: {
+                message: 'Vue.jsで書き換えました',
+                test: 'これはテスト'
+            }
+
+            // dataというパラメータでvue_unitを書き換えるということを指定している。
+            // {{}} で囲ったものをプレースホルダーという。　{{}}で囲ったものを自由に書き換えることができる。
+        });
+    </script>
+</body>
+</html>
